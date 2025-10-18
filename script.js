@@ -61,3 +61,13 @@ fontMinus.onclick = () => {
     popupCode.style.fontSize = `${currentFontSize}rem`;
   }
 };
+
+
+// 🕒 Auto version display (updates on every deploy)
+const buildVersion = document.getElementById("buildVersion");
+const now = new Date();
+const formatted = now.toLocaleString("en-IN", {
+  dateStyle: "medium",
+  timeStyle: "short",
+});
+buildVersion.textContent = formatted;

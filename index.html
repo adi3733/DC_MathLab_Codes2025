@@ -4,22 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MATLAB Code Vault</title>
+
+  <!-- 🌐 Favicon (Tab Icon) -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- 🌟 Header -->
   <header>
-  <div class="logo-title">
-    <img src="assets/mathlab.png" alt="MATLAB Logo" class="logo" />
-    <h1>MATLAB Code Vault</h1>
-  </div>
-  <p>All your MATLAB practicals — beautifully organized.</p>
-</header>
+    <div class="logo-title">
+      <img src="assets/mathlab.png" alt="MATLAB Logo" class="logo" />
+      <h1>MATLAB Code Vault</h1>
+    </div>
+    <p>All your MATLAB practicals — beautifully organized.</p>
+  </header>
 
+  <!-- 🧩 Main Practical Grid -->
   <main class="grid" id="practicalList">
     <!-- Practicals loaded dynamically -->
   </main>
 
-  <!-- Modal Popup -->
+  <!-- 💬 Modal Popup -->
   <div id="popup" class="popup">
     <div class="popup-card">
       <div class="popup-header">
@@ -38,20 +45,21 @@
     </div>
   </div>
 
-<!-- ⚠️ Disclaimer Section -->
-<section class="disclaimer">
-  <div class="disclaimer-title">
-    <img src="assets/Caution.png" alt="Caution Icon" class="caution-icon" />
-    <h3>Disclaimer</h3>
-  </div>
-  <p>
-    This website is created solely for <strong>educational purposes</strong>.  
-    It is intended to help students understand and practice MATLAB programming concepts.  
-    Please do not use this platform, its content, or provided code for any form of  
-    <strong>cheating, malpractice, or academic dishonesty</strong> during examinations or assessments.
-  </p>
-</section>
+  <!-- ⚠️ Disclaimer Section -->
+  <section class="disclaimer">
+    <div class="disclaimer-title">
+      <img src="assets/Caution.png" alt="Caution Icon" class="caution-icon" />
+      <h3>Disclaimer</h3>
+    </div>
+    <p>
+      This website is created solely for <strong>educational purposes</strong>.  
+      It is intended to help students understand and practice MATLAB programming concepts.  
+      Please do not use this platform, its content, or provided code for any form of  
+      <strong>cheating, malpractice, or academic dishonesty</strong> during examinations or assessments.
+    </p>
+  </section>
 
+  <!-- ⚡ Footer -->
   <footer>
     <p>
       Made with ❤️ by 
@@ -59,6 +67,8 @@
         TechhBuddies
       </a>
       | MATLAB Code Vault © 2025
+      <br />
+      <small>Last updated: <span id="buildVersion"></span></small>
     </p>
   </footer>
 
