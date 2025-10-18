@@ -14,7 +14,6 @@ const popupCode = document.getElementById("popupCode");
 const copyBtn = document.getElementById("copyBtn");
 const closeBtn = document.getElementById("closeBtn");
 
-// Create cards
 practicals.forEach(p => {
   const card = document.createElement("div");
   card.className = "card";
@@ -24,7 +23,7 @@ practicals.forEach(p => {
 });
 
 function openPopup(p) {
-  fetch(`assets/${p.file}`)
+  fetch(`/assets/${p.file}`)
     .then(res => res.text())
     .then(code => {
       popupTitle.textContent = `${p.name}: ${p.desc}`;
@@ -45,10 +44,9 @@ function openPopup(p) {
 
 closeBtn.onclick = () => (popup.style.display = "none");
 
-
 const fontPlus = document.getElementById("fontPlus");
 const fontMinus = document.getElementById("fontMinus");
-let currentFontSize = 0.95; // default size
+let currentFontSize = 0.95;
 
 fontPlus.onclick = () => {
   currentFontSize += 0.1;
@@ -62,8 +60,7 @@ fontMinus.onclick = () => {
   }
 };
 
-
-// 🕒 Auto version display (updates on every deploy)
+// 🕒 Auto version display
 const buildVersion = document.getElementById("buildVersion");
 const now = new Date();
 const formatted = now.toLocaleString("en-IN", {
