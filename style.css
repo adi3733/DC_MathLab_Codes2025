@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #1f1f1f, #2e0249, #570a57);
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --accent: linear-gradient(135deg, #ff7b00, #ff0077);  /* 🌈 Gradient Accent */
+  --text-light: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --popup-bg: rgba(35, 35, 35, 0.95);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeIn 1.2s ease;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header p {
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-top: 6px;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Card Style */
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 118, 62, 0.25);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  background: var(--accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Popup Modal */
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease;
+}
+
+.popup-card {
+  background: var(--popup-bg);
+  border-radius: 16px;
+  padding: 25px;
+  width: 85%;
+  max-width: 750px;
+  animation: slideUp 0.5s ease;
+  box-shadow: 0 0 30px rgba(255, 100, 100, 0.15);
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.popup-header h2 {
+  font-size: 1.3rem;
+  background: var(--accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #ff6f61;
+  transform: scale(1.2);
+}
+
+/* MATLAB Code Display Box */
+#popupCode {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ✨ Gradient Copy Button */
+.copy-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  float: right;
+  box-shadow: 0 4px 15px rgba(255, 118, 62, 0.3);
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 20px rgba(255, 118, 62, 0.5);
+  filter: brightness(1.15);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 50px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .copy-btn {
+    padding: 10px 16px;
+  }
+}
+
+
+/* Font size control buttons inside popup */
+.popup-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.font-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.font-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+
+.footer-link {
+  color: #ff7b00;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-link:hover {
+  color: #ff0077;
+  text-decoration: underline;
+}
+
+
+
+/* ⚠️ Disclaimer Section */
+.disclaimer {
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px 25px;
+  margin-top: 50px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1.2s ease;
+}
+
+/* Title row (icon + text) */
+.disclaimer-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.caution-icon {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px rgba(255, 200, 0, 0.5));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.caution-icon:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 150, 0, 0.8));
+}
+
+.disclaimer h3 {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.disclaimer p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+
+
+/* 🌟 Header with Logo */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeIn 1.2s ease;
+}
+
+.logo-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 8px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 120, 50, 0.6));
+}
+
+header h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+header p {
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-top: 8px;
+  font-size: 1rem;
+}
+

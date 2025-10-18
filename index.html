@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MATLAB Code Vault</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+  <div class="logo-title">
+    <img src="assets/mathlab.png" alt="MATLAB Logo" class="logo" />
+    <h1>MATLAB Code Vault</h1>
+  </div>
+  <p>All your MATLAB practicals — beautifully organized.</p>
+</header>
+
+  <main class="grid" id="practicalList">
+    <!-- Practicals loaded dynamically -->
+  </main>
+
+  <!-- Modal Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-card">
+      <div class="popup-header">
+        <h2 id="popupTitle"></h2>
+        <button id="closeBtn" class="close-btn">✖</button>
+      </div>
+
+      <pre id="popupCode"></pre>
+
+      <!-- ✅ Font Size Controls + Copy Button -->
+      <div class="popup-controls">
+        <button id="fontMinus" class="font-btn">−</button>
+        <button id="fontPlus" class="font-btn">+</button>
+        <button id="copyBtn" class="copy-btn">📋 Copy Code</button>
+      </div>
+    </div>
+  </div>
+
+<!-- ⚠️ Disclaimer Section -->
+<section class="disclaimer">
+  <div class="disclaimer-title">
+    <img src="assets/Caution.png" alt="Caution Icon" class="caution-icon" />
+    <h3>Disclaimer</h3>
+  </div>
+  <p>
+    This website is created solely for <strong>educational purposes</strong>.  
+    It is intended to help students understand and practice MATLAB programming concepts.  
+    Please do not use this platform, its content, or provided code for any form of  
+    <strong>cheating, malpractice, or academic dishonesty</strong> during examinations or assessments.
+  </p>
+</section>
+
+  <footer>
+    <p>
+      Made with ❤️ by 
+      <a href="https://www.techhbuddies.com" target="_blank" class="footer-link">
+        TechhBuddies
+      </a>
+      | MATLAB Code Vault © 2025
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
