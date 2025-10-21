@@ -5,13 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MATLAB Code Vault</title>
 
-  <!-- 🌐 Favicon (Tab Icon) -->
+  <!-- 🌐 Favicon -->
   <link rel="icon" type="image/png" href="/assets/favicon.png" />
   <link rel="apple-touch-icon" href="/assets/favicon.png" />
 
-  <!-- ✅ Fixed CSS Path -->
+  <!-- ✅ CSS -->
   <link rel="stylesheet" href="/style-v2.css" />
+
+  <!-- 📱 PWA Support -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#ff7b00" />
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/service-worker.js").then(reg => {
+        reg.addEventListener("updatefound", () => {
+          const newWorker = reg.installing;
+          newWorker.addEventListener("statechange", () => {
+            if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+              showUpdatePopup();
+            }
+          });
+        });
+      });
+    }
+
+    function showUpdatePopup() {
+      const popup = document.createElement("div");
+      popup.innerHTML = `
+        <div style="
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: linear-gradient(135deg, #ff7b00, #ff0077);
+          color: #fff;
+          padding: 12px 20px;
+          border-radius: 10px;
+          font-weight: 500;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+          z-index: 9999;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+        ">
+          ✨ New version available — Click to refresh
+        </div>
+      `;
+      document.body.appendChild(popup);
+      popup.addEventListener("click", () => {
+        navigator.serviceWorker.getRegistration().then(reg => {
+          if (reg.waiting) {
+            reg.waiting.postMessage("SKIP_WAITING");
+            window.location.reload();
+          }
+        });
+      });
+    }
+  </script>
 </head>
+
 <body>
   <!-- 🌟 Header -->
   <header>
@@ -22,10 +73,7 @@
     <p>All your MATLAB practicals — beautifully organized.</p>
   </header>
 
-  <!-- 🧩 Main Practical Grid -->
-  <main class="grid" id="practicalList">
-    <!-- Practicals loaded dynamically -->
-  </main>
+  <main class="grid" id="practicalList"></main>
 
   <!-- 💬 Modal Popup -->
   <div id="popup" class="popup">
@@ -37,7 +85,6 @@
 
       <pre id="popupCode"></pre>
 
-      <!-- ✅ Font Size Controls + Copy Button -->
       <div class="popup-controls">
         <button id="fontMinus" class="font-btn">−</button>
         <button id="fontPlus" class="font-btn">+</button>
@@ -46,7 +93,7 @@
     </div>
   </div>
 
-  <!-- ⚠️ Disclaimer Section -->
+  <!-- ⚠️ Disclaimer -->
   <section class="disclaimer">
     <div class="disclaimer-title">
       <img src="/assets/Caution.png" alt="Caution Icon" class="caution-icon" />
@@ -73,7 +120,6 @@
     </p>
   </footer>
 
-  <!-- ✅ Fixed Script Path -->
   <script src="/script.js"></script>
 </body>
 </html>
