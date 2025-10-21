@@ -3,7 +3,7 @@
 :root {
   --bg-gradient: linear-gradient(135deg, #1f1f1f, #2e0249, #570a57);
   --card-bg: rgba(255, 255, 255, 0.1);
-  --accent: linear-gradient(135deg, #ff7b00, #ff0077);  /* 🌈 Gradient Accent */
+  --accent: linear-gradient(135deg, #ff7b00, #ff0077);
   --text-light: #ffffff;
   --text-muted: rgba(255, 255, 255, 0.7);
   --popup-bg: rgba(35, 35, 35, 0.95);
@@ -27,38 +27,97 @@ body {
   overflow-x: hidden;
 }
 
-/* Header */
+/* 🌟 Header */
 header {
   text-align: center;
   margin-bottom: 40px;
   animation: fadeIn 1.2s ease;
 }
 
+.logo-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 8px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 120, 50, 0.6));
+}
+
 header h1 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 600;
-  letter-spacing: 1px;
   background: linear-gradient(90deg, #ff8a00, #e52e71);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
 }
 
 header p {
   color: var(--text-muted);
   font-weight: 300;
-  margin-top: 6px;
+  margin-top: 8px;
+  font-size: 1rem;
 }
 
-/* Grid Layout */
+/* 🧩 Practical Grid Layout */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
   width: 100%;
   max-width: 1000px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-/* Card Style */
+/* 💻 Desktop (3 cards per row if space allows) */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 📱 Tablet (2 cards per row) */
+@media (max-width: 1023px) and (min-width: 601px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 📱 Mobile (2x2 grid layout) */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px 10px;
+  }
+
+  .card {
+    font-size: 0.9rem;
+    padding: 15px 10px;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .card span {
+    font-size: 0.8rem;
+  }
+}
+
+/* 🪄 Card Design */
 .card {
   background: var(--card-bg);
   border-radius: 16px;
@@ -92,7 +151,7 @@ header p {
   margin-top: 4px;
 }
 
-/* Popup Modal */
+/* 🪄 Popup Modal */
 .popup {
   display: none;
   position: fixed;
@@ -144,7 +203,7 @@ header p {
   transform: scale(1.2);
 }
 
-/* MATLAB Code Display Box */
+/* Code Box */
 #popupCode {
   background: rgba(255,255,255,0.05);
   color: #fff;
@@ -159,7 +218,7 @@ header p {
   border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* ✨ Gradient Copy Button */
+/* Buttons */
 .copy-btn {
   background: var(--accent);
   color: #fff;
@@ -179,42 +238,7 @@ header p {
   filter: brightness(1.15);
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  margin-top: 50px;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(40px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-
-  .card {
-    padding: 18px;
-  }
-
-  .copy-btn {
-    padding: 10px 16px;
-  }
-}
-
-
-/* Font size control buttons inside popup */
+/* Popup Controls */
 .popup-controls {
   display: flex;
   justify-content: flex-end;
@@ -239,21 +263,6 @@ footer {
   transform: scale(1.05);
 }
 
-
-.footer-link {
-  color: #ff7b00;
-  font-weight: 500;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.footer-link:hover {
-  color: #ff0077;
-  text-decoration: underline;
-}
-
-
-
 /* ⚠️ Disclaimer Section */
 .disclaimer {
   max-width: 900px;
@@ -269,7 +278,6 @@ footer {
   animation: fadeIn 1.2s ease;
 }
 
-/* Title row (icon + text) */
 .disclaimer-title {
   display: flex;
   align-items: center;
@@ -291,69 +299,15 @@ footer {
   filter: drop-shadow(0 0 10px rgba(255, 150, 0, 0.8));
 }
 
-.disclaimer h3 {
-  background: var(--accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600;
-  font-size: 1.2rem;
-  margin: 0;
-}
-
-.disclaimer p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-
-
-/* 🌟 Header with Logo */
-header {
+/* Footer */
+footer {
   text-align: center;
-  margin-bottom: 40px;
-  animation: fadeIn 1.2s ease;
-}
-
-.logo-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  border-radius: 8px;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.logo:hover {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 10px rgba(255, 120, 50, 0.6));
-}
-
-header h1 {
-  font-size: 2.4rem;
-  font-weight: 600;
-  background: linear-gradient(90deg, #ff8a00, #e52e71);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 1px;
-}
-
-header p {
   color: var(--text-muted);
-  font-weight: 300;
-  margin-top: 8px;
-  font-size: 1rem;
+  font-size: 0.85rem;
+  margin-top: 50px;
 }
 
-
-/* 🌟 Splash Screen Simple Fade-In Animation */
+/* 🌟 Splash Screen (Simple Fade-In) */
 #splash-screen {
   position: fixed;
   top: 0;
@@ -409,7 +363,7 @@ header p {
   animation: fadeOut 0.8s ease forwards;
 }
 
-/* ✨ Keyframes */
+/* ✨ Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
