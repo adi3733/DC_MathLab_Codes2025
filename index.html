@@ -64,6 +64,16 @@
 </head>
 
 <body>
+
+  <!-- 🌟 3D Splash Screen -->
+  <div id="splash-screen">
+    <div class="splash-content">
+      <img src="/assets/HD Logo PNG.png" alt="Techh Buddies Logo" class="splash-logo" />
+      <h1 class="splash-title">Techh Buddies</h1>
+      <p class="splash-caption">Your Friendly Techh Partner</p>
+    </div>
+  </div>
+
   <!-- 🌟 Header -->
   <header>
     <div class="logo-title">
@@ -82,9 +92,7 @@
         <h2 id="popupTitle"></h2>
         <button id="closeBtn" class="close-btn">✖</button>
       </div>
-
       <pre id="popupCode"></pre>
-
       <div class="popup-controls">
         <button id="fontMinus" class="font-btn">−</button>
         <button id="fontPlus" class="font-btn">+</button>
@@ -120,6 +128,17 @@
     </p>
   </footer>
 
+  <!-- ⚙️ Scripts -->
   <script src="/script.js"></script>
+  <script>
+    // Splash Screen Loader (3D Animation)
+    window.addEventListener("load", () => {
+      const splash = document.getElementById("splash-screen");
+      setTimeout(() => {
+        splash.classList.add("hide");
+        setTimeout(() => splash.remove(), 800);
+      }, 2500);
+    });
+  </script>
 </body>
 </html>
