@@ -130,15 +130,15 @@
 
   <!-- ⚙️ Scripts -->
   <script src="/script.js"></script>
-  <script>
-    // Splash Screen Loader (3D Animation)
-    window.addEventListener("load", () => {
-      const splash = document.getElementById("splash-screen");
-      setTimeout(() => {
-        splash.classList.add("hide");
-        setTimeout(() => splash.remove(), 800);
-      }, 2500);
-    });
-  </script>
+ <script>
+  // Splash Screen Loader (Fade Animation)
+  window.addEventListener("load", () => {
+    const splash = document.getElementById("splash-screen");
+    setTimeout(() => {
+      splash.classList.add("hide");
+      setTimeout(() => splash.remove(), 800);
+    }, 2500);
+  });
+</script>
 </body>
 </html>
