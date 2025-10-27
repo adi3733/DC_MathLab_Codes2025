@@ -1,4 +1,4 @@
-======== ENCODING PRORAM=========
+======== ENCODING PROGRAM=========
 clc;
 clear all;
 close all;
@@ -19,7 +19,7 @@ cv=[cv1,cv2]
 trellis=poly2trellis(k,cv)
 code=convenc(msg,trellis)
 
-========DECODING PRORAM=========
+========DECODING PROGRAM=========
 clc;
 clear;
 disp('Aditya R Ghayal ROLL NO: 23');
