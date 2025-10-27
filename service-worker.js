@@ -1,16 +1,28 @@
-// ⚡ MATLAB Code Vault - Offline Cache + Update Notification
-const CACHE_NAME = "matlab-code-vault-v1";
+// ⚡ MATLAB Code Vault - FULL Offline Support + Update Notice
+const CACHE_NAME = "matlab-code-vault-v3";
 const URLS_TO_CACHE = [
   "/",
   "/index.html",
   "/style-v2.css",
   "/script.js",
+  "/manifest.json",
+
+  // Images & Icons
   "/assets/favicon.png",
   "/assets/mathlab.png",
-  "/assets/Caution.png"
+  "/assets/Caution.png",
+  "/assets/HD Logo PNG.png",
+
+  // MATLAB Codes ✅ (Offline Available)
+  "/assets/Adi5.m",
+  "/assets/Adi6.m",
+  "/assets/Adi7.m",
+  "/assets/Adi8.m",
+  "/assets/Adi9.m",
+  "/assets/Adi10.m"
 ];
 
-// Install event
+// INSTALL → Cache all required content
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -19,20 +31,24 @@ self.addEventListener("install", event => {
   );
 });
 
-// Activate event
+// ACTIVATE → Remove old cache
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.map(key => key !== CACHE_NAME && caches.delete(key)))
+      Promise.all(
+        keys.map(key => {
+          if (key !== CACHE_NAME) return caches.delete(key);
+        })
+      )
     )
   );
   self.clients.claim();
 });
 
-// Fetch event
+// FETCH → Serve from cache first, update in background
 self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
+    caches.match(event.request).then(cached => {
       const fetchPromise = fetch(event.request)
         .then(networkResponse => {
           if (networkResponse && networkResponse.status === 200) {
@@ -42,13 +58,13 @@ self.addEventListener("fetch", event => {
           }
           return networkResponse;
         })
-        .catch(() => cachedResponse);
-      return cachedResponse || fetchPromise;
+        .catch(() => cached);
+      return cached || fetchPromise;
     })
   );
 });
 
-// Handle message (skip waiting)
+// NEW VERSION UPDATE
 self.addEventListener("message", event => {
   if (event.data === "SKIP_WAITING") self.skipWaiting();
 });
