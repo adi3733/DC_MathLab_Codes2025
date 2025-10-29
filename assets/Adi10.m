@@ -19,7 +19,7 @@ cv=[cv1,cv2]
 trellis=poly2trellis(k,cv)
 code=convenc(msg,trellis)
 
-========DECODING PROGRAM=========
+========DECODING PROGRAM========
 clc;
 clear;
 disp('Aditya R Ghayal ROLL NO: 23');
