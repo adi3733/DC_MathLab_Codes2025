@@ -1,11 +1,12 @@
-======== ENCODING PROGRAM=========
 clc;
 clear all;
 close all;
+
 n=input('enter the length of code word frame n:');
 l=input('enter the length of msg vector l:');
 m=input('enter the number of flip flops m:');
 msg=input('enter the number of actual msg bits:');
+
 g1=input('enter the impulse response of adder 1:');
 g2=input('enter the impulse response of adder2:');
 k=n+1;
@@ -18,18 +19,3 @@ cv2=str2num(dec2base(bin2dec(c),8));
 cv=[cv1,cv2]
 trellis=poly2trellis(k,cv)
 code=convenc(msg,trellis)
-
-========DECODING PROGRAM========
-clc;
-clear;
-disp('Aditya R Ghayal ROLL NO: 23');
-msg=input('enter the msg sequence=');
-display(msg);
-a=str2num(dec2base(bin2dec('111'),8));
-b=str2num(dec2base(bin2dec('110'),8));
-g=[a b];
-trellis=poly2trellis(3,g);
-code=convenc(msg,trellis)
-tblen=1;
-decoded=vitdec(code,trellis,tblen,'trunc','hard')
-

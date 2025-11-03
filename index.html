@@ -15,7 +15,9 @@
   <!-- 📱 PWA Support -->
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#ff7b00" />
+
   <script>
+    // Register Service Worker + Auto-update popup
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/service-worker.js").then(reg => {
         reg.addEventListener("updatefound", () => {
@@ -65,7 +67,7 @@
 
 <body>
 
-  <!-- 🌟 3D Splash Screen -->
+  <!-- 🌟 Splash Screen -->
   <div id="splash-screen">
     <div class="splash-content">
       <img src="/assets/HD Logo PNG.png" alt="Techh Buddies Logo" class="splash-logo" />
@@ -83,6 +85,7 @@
     <p>All your MATLAB practicals — beautifully organized.</p>
   </header>
 
+  <!-- 📘 Practical Cards Grid -->
   <main class="grid" id="practicalList"></main>
 
   <!-- 💬 Modal Popup -->
@@ -92,7 +95,17 @@
         <h2 id="popupTitle"></h2>
         <button id="closeBtn" class="close-btn">✖</button>
       </div>
+
+<!-- ✅ File Tabs (Styled to match Vault UI) -->
+<div id="fileTabs" class="file-tabs">
+  <!-- Dynamic tabs will appear here via JS -->
+</div>
+
+
+      <!-- 🧾 Code Content -->
       <pre id="popupCode"></pre>
+
+      <!-- Controls -->
       <div class="popup-controls">
         <button id="fontMinus" class="font-btn">−</button>
         <button id="fontPlus" class="font-btn">+</button>
@@ -130,15 +143,16 @@
 
   <!-- ⚙️ Scripts -->
   <script src="/script.js"></script>
- <script>
-  // Splash Screen Loader (Fade Animation)
-  window.addEventListener("load", () => {
-    const splash = document.getElementById("splash-screen");
-    setTimeout(() => {
-      splash.classList.add("hide");
-      setTimeout(() => splash.remove(), 800);
-    }, 2500);
-  });
-</script>
+
+  <!-- 🎬 Splash Fade-out -->
+  <script>
+    window.addEventListener("load", () => {
+      const splash = document.getElementById("splash-screen");
+      setTimeout(() => {
+        splash.classList.add("hide");
+        setTimeout(() => splash.remove(), 800);
+      }, 2500);
+    });
+  </script>
 </body>
 </html>

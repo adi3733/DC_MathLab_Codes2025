@@ -1,3 +1,8 @@
+clc;
+clear all;
+close all;
+
+
 %% Entering Symbols and their probabilities
 symbol = input('Enter the symbols: ');
 p = input('Enter the symbol probabilities: ');
@@ -42,7 +47,7 @@ dhsig = huffmandeco(hcode, dict);
 disp(dhsig');
 
 if isequal(sig, dhsig)
-    disp('? Encoded signal is completely recovered');
+    disp(' Encoded signal is completely recovered');
 else
-    disp('? Encoded signal is not properly recovered');
+    disp(' Encoded signal is not properly recovered');
 end

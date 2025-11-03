@@ -398,3 +398,45 @@ footer {
   from { opacity: 1; }
   to { opacity: 0; transform: scale(1.05); }
 }
+
+
+
+/* 🌈 File Tabs Styling (Matches Vault Theme) */
+.file-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  justify-content: flex-start;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  animation: fadeIn 0.4s ease;
+}
+
+.file-tab {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.file-tab:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(255, 140, 40, 0.3);
+}
+
+.file-tab.active {
+  background: linear-gradient(135deg, #ff7b00, #ff0077);
+  color: #fff;
+  border: none;
+  box-shadow: 0 0 12px rgba(255, 118, 62, 0.4);
+  transform: scale(1.05);
+}

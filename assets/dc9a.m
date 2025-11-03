@@ -18,4 +18,5 @@ disp('Thr error vector table is');
 disp(err_vec);
 decData=decode(r,n,k,'cyclic/binary',gpol,err_vec);
 disp('The correct message is');
-disp(decData) 
+disp(decData)
+
