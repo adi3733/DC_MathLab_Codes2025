@@ -10,7 +10,7 @@ const practicals = [
   { 
     name: "Practical 6", 
     desc: "Performance of M-PSK and M-QAM", 
-    files: [ "dc6a.m", "dc6b.m" ] 
+    files: [ "dc6a.m",  ] 
   },
   { 
     name: "Practical 7", 
@@ -25,7 +25,7 @@ const practicals = [
   { 
     name: "Practical 9", 
     desc: "Simulation of Cyclic Codes using MATLAB", 
-    files: [ "dc9a.m", "dc9b.m" ] 
+    files: [ "dc9a.m",  ] 
   },
   { 
     name: "Practical 10", 
