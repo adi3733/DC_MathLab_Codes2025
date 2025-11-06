@@ -336,7 +336,7 @@ footer {
   flex-direction: column;
   z-index: 99999;
   overflow: hidden;
-  animation: fadeIn 1.5s ease forwards;
+  animation: fadeIn 0.1s ease forwards;
 }
 
 .splash-content {
