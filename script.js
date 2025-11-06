@@ -10,7 +10,7 @@ const practicals = [
   { 
     name: "Practical 6", 
     desc: "Performance of M-PSK and M-QAM", 
-    files: [ "dc6a.m",  ] 
+    files: [ "dc6a.m", "dc6b.m"  ] 
   },
   { 
     name: "Practical 7", 
